@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>JDK8之Stream流用法</title>
+      <link href="/JDK8%E4%B9%8BStream%E6%B5%81%E7%94%A8%E6%B3%95/"/>
+      <url>/JDK8%E4%B9%8BStream%E6%B5%81%E7%94%A8%E6%B3%95/</url>
+      
+        <content type="html"><![CDATA[<p>##Java8 Stream 流操作<br>现在的业务越来越复复杂话、随着JDK版本主键的更替一种新的操作诞生 流操作<br>以下描述一些我自己用到的一些场景与用法</p><p>####List转Map<br>常见的</p><pre><code class="java">Map&lt;Long, MessageDetail&gt; messageMap = list.stream().collect(Collectors.toMap(MessageDetail::getMessageTypeId, v -&gt; v));</code></pre><p>如果按照MessageTypeId作为Key转成Map遇到相同的typeId处理方式</p><pre><code class="java">Map&lt;Long, MessageDetail&gt; messageMap = list.stream().collect(Collectors.toMap(MessageDetail::getMessageTypeId, v -&gt; v,(a,b)-&gt;a));</code></pre><p>如果遇到相同的Key怎么按照自己的规则去取舍？</p><pre><code class="java">    public static &lt;T, K, U&gt;    Collector&lt;T, ?, Map&lt;K,U&gt;&gt; toMap(Function&lt;? super T, ? extends K&gt; keyMapper,                                    Function&lt;? super T, ? extends U&gt; valueMapper,                                    BinaryOperator&lt;U&gt; mergeFunction) &#123;        return toMap(keyMapper, valueMapper, mergeFunction, HashMap::new);    &#125;    1.第一个参数是以什么作为Key     2.第二个参数是以什么作为Value    3.如果遇到相同的怎么取舍？Map&lt;Long, MessageDetail&gt; messageMap = list.stream().collect(Collectors.toMap(MessageDetail::getMessageTypeId, v -&gt; v,BinaryOperator.minBy((v1,v2) -&gt;v1.getId().compareTo(v2.getId()))));也可以简写Map&lt;Long, MessageDetail&gt; messageMap = list.stream().collect(Collectors.toMap(MessageDetail::getMessageTypeId, v -&gt; v,BinaryOperator.minBy(Comparator.comparing(MessageDetail::getId))));    1.按照messageTypeId作为Key 转Map    2.返回自己作为 Value    3.如果遇到 messageTypeId相同的 根据对象的 id判断取最小保留</code></pre><p>####List 排序<br>贴一个常用的类所有stream的操作都用以下实体类</p><pre><code class="java">public class Student &#123;    private Long id;    private Integer age;    private Integer sort;    private String name;    private Integer sex;&#125;</code></pre><p>1.默认排序<br>2.按照字段排序<br>3.按照字段倒序<br>3.多字段排序</p><pre><code class="java">默认排序list.stream().sorted().toList();按照 id排序（默认是正序）list.stream().sorted(Comparator.comparing(Student::getId)).toList();按照ID 排序 倒序list.stream().sorted(Comparator.comparing(Student::getId).reversed()).toList();多字段排序 关键词  thenComparinglist.stream().sorted(Comparator.comparing(Student::getId).thenComparing(Student::getAge).reversed()).toList();</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mybatis类型转换器</title>
+      <link href="/Mybatis%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%99%A8/"/>
+      <url>/Mybatis%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>我们应该都遇到过这种需求或者是这种表结构设计的字段<br><code>ids varchar(255)</code> 存储ID  逗号’,’分割 的字符串<br> ids顾名思义 就是自己定义符合自己规则的字段每次查询在去特殊处理<br> 在Mybatis传统框架中使用方式 自定义一个转换器 继承 BaseTypeHandler类在去实现某些方法<br> <a href="https://blog.csdn.net/qq_48569009/article/details/124208363">传送门</a><br>接下来我想说的是 Mybatis-plus的使用方式非常之方便<br>关键类<br>FastjsonTypeHandler 或者 JacksonTypeHandler 这里我使用的是 第二个</p><h5 id="1-定义转换器（上代码）"><a href="#1-定义转换器（上代码）" class="headerlink" title="1.定义转换器（上代码）"></a>1.定义转换器（上代码）</h5><pre><code class="java">public class ListLongTypeHandler extends JacksonTypeHandler &#123;    public ListLongTypeHandler(Class&lt;?&gt; type) &#123;        super(type);    &#125;    @Override    protected Object parse(String json) &#123;        if(VariableUtil.isNotEmpty(json))&#123;            try&#123;                return Arrays.stream(json.split(&quot;,&quot;)).map(Long::parseLong).toList();            &#125;catch (Exception e) &#123;                return new ArrayList&lt;Long&gt;();            &#125;        &#125;else&#123;            return new ArrayList&lt;&gt;();        &#125;    &#125;    @Override    protected String toJson(Object obj) &#123;        if(VariableUtil.isNotEmpty(obj))&#123;            List&lt;Long&gt; list = (List&lt;Long&gt;)obj;            return list.stream().map(v -&gt; v.toString()).collect(Collectors.joining(&quot;,&quot;));        &#125;else&#123;            return &quot;&quot;;        &#125;    &#125;&#125;</code></pre><p>其中只需要实现 toJson 控制 传入操作  parse传出操作 即可</p><h5 id="2-配置转换器"><a href="#2-配置转换器" class="headerlink" title="2.配置转换器"></a>2.配置转换器</h5><pre><code class="java">1.给实体类添加 注解类型 @TableName(autoResultMap = true)2.给字段添加 转换器注解@TableField(typeHandler = ListLongTypeHandler.class)private List&lt;Long&gt; otherIds;</code></pre><p>只需要这两步  使用mybatis-plus的操作就可以完成自动转换了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> MyBatis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>微信支付V3版本对接</title>
+      <link href="/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98V3%E7%89%88%E6%9C%AC%E5%AF%B9%E6%8E%A5/"/>
+      <url>/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98V3%E7%89%88%E6%9C%AC%E5%AF%B9%E6%8E%A5/</url>
+      
+        <content type="html"><![CDATA[<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>当需要使用微信支付时，需确保有一个可使用的appid，这里包括(微信公众平台、微信小程序、微信开放平台)等</p><pre><code class="mermaid">graph LR;subgraph 流程B[申请密钥证书等配置]B==&gt;C[获取微信平台证书]C==&gt;D[将以上所有参数进行调用]end</code></pre><h3 id="V3所需配置"><a href="#V3所需配置" class="headerlink" title="V3所需配置"></a>V3所需配置</h3><ul><li>keyPath：apiclient_key.pem 商户 key 绝对路径</li><li>certPath：capiclient_cert.pem 商户证书绝对路径</li><li>certP12Path：apiclient_cert.p12 证书绝对路径（暂未使用、可忽略）</li><li>platformCertPath：wx_cert.pem 微信平台证书绝对路径，证书需要通过接口获取</li><li>mchId：微信支付商户号</li><li>apiKey3：Api-V3密钥</li></ul><h3 id="微信商户证书申请流程"><a href="#微信商户证书申请流程" class="headerlink" title="微信商户证书申请流程"></a>微信商户证书申请流程</h3><ol><li>登录商户平台</li><li>账户中心</li><li>api安全</li><li>生成证书</li></ol><p>此步骤操作后可拿到(apiclient_key.pem、capiclient_cert.pem、apiclient_cert.p12)</p><h3 id="微信平台证书-platformCertPath-获取步骤"><a href="#微信平台证书-platformCertPath-获取步骤" class="headerlink" title="微信平台证书(platformCertPath)获取步骤"></a>微信平台证书(platformCertPath)获取步骤</h3><p>使用<a href="https://github.com/wechatpay-apiv3/CertificateDownloader">Certificate Downloader</a>进行生成</p><h4 id="所需配置"><a href="#所需配置" class="headerlink" title="所需配置"></a>所需配置</h4><ol><li>商户的私钥文件(-f)：apiclient_key.pem路径</li><li>证书解密的密钥(-k)：Api-V3密钥</li><li>微信支付商户号(-m)：对应mchId</li><li>微信证书输出路径(-o)</li><li>商户证书序列号(-s)：申请商户证书后可查看序列号、或<a href="#%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%E6%9F%A5%E7%9C%8B%E8%AF%81%E4%B9%A6%E5%BA%8F%E5%88%97%E5%8F%B7">点击此处查看</a></li></ol><h4 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h4><ol><li>下载Certificate Downloader.jar文件</li><li>执行完整命令</li></ol><pre><code class="shell">java -jar CertificateDownloader-1.1.jar -k $&#123;apiV3key&#125; -m $&#123;mchId&#125; -f $&#123;mchPrivateKeyFilePath&#125; -s $&#123;mchSerialNo&#125; -o $&#123;outputFilePath&#125;</code></pre><h3 id="微信支付查看证书序列号"><a href="#微信支付查看证书序列号" class="headerlink" title="微信支付查看证书序列号"></a>微信支付查看证书序列号</h3><p>证书打包解压路径内执行(微信支付v2  v3密钥必须32位，不然可保存，但使用会报签名错误)</p><pre><code class="shell">openssl x509 -in apiclient_cert.pem -noout -serial</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工作记录 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+            <tag> SpringBoot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up</title>
+      <link href="/mybatis%20%20Could%20not%20create%20connection%20to%20database%20server.%20Attempted%20reconnect%203%20times.%20Giving%20up/"/>
+      <url>/mybatis%20%20Could%20not%20create%20connection%20to%20database%20server.%20Attempted%20reconnect%203%20times.%20Giving%20up/</url>
+      
+        <content type="html"><![CDATA[<h3 id="mybatis-Could-not-create-connection-to-database-server-Attempted-reconnect-3-times-Giving-up"><a href="#mybatis-Could-not-create-connection-to-database-server-Attempted-reconnect-3-times-Giving-up" class="headerlink" title="mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up"></a>mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up</h3><p>原文翻译</p><pre><code>无法创建到数据库服务器的连接。尝试重新连接3次。放弃</code></pre><p>今天在创建新项目时发生的错误，经过一系列的排查，发现是设置datasource.url原因所致</p><pre><code class="yml">    # 此配置可运行    url: jdbc:mysql://localhost:3306/master?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;serverTimezone=UTC    # 此配置会导致错误    url: jdbc:mysql://localhost:3006/madmin?useUnicode=true&amp;useSSL=true&amp;characterEncoding=utf8&amp;autoReconnect=true&amp;serverTimezone=UTC</code></pre><p>显然问题出在了<code>autoReconnect</code>上面，平时都是赋值粘贴这个配置，还没有好好的看过，然后就去搜了下这个参数</p><table><thead><tr><th>参数</th><th>说明</th></tr></thead><tbody><tr><td>autoReconnect</td><td>驱动程序是否应该尝试重新建立连接? 如果启用了，驱动程序将会对陈旧或死亡连接上发出的查询抛出异常，这些查询属于当前事务，但是在新事务中对连接发出的下一个查询之前会尝试重新连接。 不推荐这个功能的使用,因为它有副作用与会话状态和数据一致性当应用程序不妥善处理异常,仅设计用于当你无法配置您的应用程序来处理异常造成死亡和陈旧的正确连接。 另外，作为最后一个选项，研究将MySQL服务器变量“wait_timeout”设置为一个较高的值，而不是默认的8小时。</td></tr><tr><td>maxReconnects</td><td>如果autoReconnect为true，则尝试重新连接的最大次数，默认为’3’。</td></tr><tr><td>initialTimeout</td><td>如果启用了autoReconnect，重新连接尝试之间的初始等待时间(以秒为单位，默认为’2’)。</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 错误排查 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Kibana安装问题</title>
+      <link href="/Kibana%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/"/>
+      <url>/Kibana%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Kibana安装后产生CREATE-NEW-TARGET-gt-CREATE-NEW-TARGET错误问题"><a href="#Kibana安装后产生CREATE-NEW-TARGET-gt-CREATE-NEW-TARGET错误问题" class="headerlink" title="Kibana安装后产生CREATE_NEW_TARGET -&gt; CREATE_NEW_TARGET错误问题"></a>Kibana安装后产生CREATE_NEW_TARGET -&gt; CREATE_NEW_TARGET错误问题</h2><p>解决方案</p><p>找到es中的elasticsearch.yml文件 检查以下配置是否正确</p><pre><code class="yml"># Enable security featuresxpack.security.enabled: falsexpack.security.enrollment.enabled: true# Enable encryption for HTTP API client connections, such as Kibana, Logstash, and Agentsxpack.security.http.ssl:enabled: falsekeystore.path: certs/http.p12# Enable encryption and mutual authentication between cluster nodesxpack.security.transport.ssl:enabled: falseverification_mode: certificatekeystore.path: certs/transport.p12truststore.path: certs/transport.p12# Create a new cluster with the current node only# Additional nodes can still join the cluster latercluster.initial_master_nodes: [&quot;Node1&quot;]</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 错误排查 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Elasticsearch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JavaScript实例多次调用问题</title>
+      <link href="/JavaScript%E5%AE%9E%E4%BE%8B%E5%A4%9A%E6%AC%A1%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98/"/>
+      <url>/JavaScript%E5%AE%9E%E4%BE%8B%E5%A4%9A%E6%AC%A1%E8%B0%83%E7%94%A8%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<p>今天在开发过程中遇到以下需求<br /><br>在一个视图内，渲染两次组织架构树，分别用于两种字段的存取值与渲染，由于同事已经写过这个功能，所以我就只需要将核心的代码拿来复用即可</p><p>写出来的代码结构大致如下</p><pre><code class="JavaScript">api: &#123;    tree: &#123;        return &#123;            // tree的渲染配置参数            config: &#123;                ...省略内部配置            &#125;,            // tree 初始化            init() &#123;                ...根据conifg配置进行渲染tree            &#125;,            getList()&#123;                require([&#39;jstree&#39;], function ()&#123;                    ...内部业务方法，每次tree操作事件 都会执行该方法作为刷新tree树事件                &#125;)            &#125;        &#125;    &#125;&#125;</code></pre><p>方法调用</p><pre><code class="JavaScript">        // 设置A的配置信息 例如dom结构        api.tree.config.userIdsEvent = &quot;#rule_box&quot;        api.tree.config.checkAllEvent = &quot;#rule_box_checkall&quot;        api.tree.config.expandAllEvent = &quot;#rule_box_expandall&quot;        api.tree.config.ck = Config.rule_box_ck;        // 加载tree初始化        api.tree.init()        // 延迟1秒执行 1秒后进行tree结构默认选中操作        setTimeout(function ()&#123;            ... 默认选中tree节点            $(api.tree.channelEvent).jstree(&quot;check_node&quot;, api.tree.config.ck);            api.tree.getList(that);        &#125;, 1000)        // 设置B的配置信息 例如dom结构        api.tree.config.userIdsEvent = &quot;#push_box&quot;        api.tree.config.checkAllEvent = &quot;#push_box_checkall&quot;        api.tree.config.expandAllEvent = &quot;#push_box_expandall&quot;        api.tree.config.ck = Config.push_box_ck;        // 加载tree初始化        api.tree.init()        // 延迟1秒执行 1秒后进行tree结构默认选中操作        setTimeout(function ()&#123;            ... 默认选中tree节点            $(api.tree.channelEvent).jstree(&quot;check_node&quot;, api.tree.config.ck);            api.tree.getList(that);        &#125;, 1000)</code></pre><p>乍一看好像没啥问题，运行后才发现  第一个tree不会渲染 只会渲染第二个</p><p>经过仔细思考后觉得应该是require内部引用是异步的问题，当赋值完后 require拿到的是第二个的配置信息</p><p>于是再次进行修改</p><p>方法调用</p><pre><code class="JavaScript">    require([&#39;jstree&#39;], function ()&#123;        // 设置A的配置信息 例如dom结构        api.tree.config.userIdsEvent = &quot;#rule_box&quot;        api.tree.config.checkAllEvent = &quot;#rule_box_checkall&quot;        api.tree.config.expandAllEvent = &quot;#rule_box_expandall&quot;        api.tree.config.ck = Config.rule_box_ck;                    // 加载tree初始化        api.tree.init()        // 延迟1秒执行 1秒后进行tree结构默认选中操作        setTimeout(function ()&#123;             ... 默认选中tree节点赋值            $(api.tree.channelEvent).jstree(&quot;check_node&quot;, api.tree.config.ck);            api.tree.getList(that);        &#125;, 1000)                &#125;)    require([&#39;jstree&#39;], function ()&#123;        // 设置B的配置信息 例如dom结构        api.tree.config.userIdsEvent = &quot;#push_box&quot;        api.tree.config.checkAllEvent = &quot;#push_box_checkall&quot;        api.tree.config.expandAllEvent = &quot;#push_box_expandall&quot;        api.tree.config.ck = Config.push_box_ck;        // 加载tree初始化        api.tree.init()        // 延迟1秒执行 1秒后进行tree结构默认选中操作        setTimeout(function ()&#123;            ... 默认选中tree节点赋值            $(api.tree.channelEvent).jstree(&quot;check_node&quot;, api.tree.config.ck);            api.tree.getList(that);        &#125;, 1000)    &#125;)</code></pre><p>将require在外部两次引用，这次确实是将tree渲染出来了，但是没有默认选中，冷静下来思考后想起来js深拷贝浅拷贝的问题，当setTimeout执行的时候，第二次赋值将会覆盖掉第一次的赋值，因为该操作指向的都是同一个内存地址，对同一个内存属性进行操作</p><p>于是我就尝试使用JSON暴力拷贝方式</p><pre><code class="JavaScript">    let that = JSON.parse(JSON.stringify(api.tree))    that.config.userIdsEvent = &quot;#push_box&quot;    that.config.checkAllEvent = &quot;#push_box_checkall&quot;    that.config.expandAllEvent = &quot;#push_box_expandall&quot;                // 加载tree初始化    that.init()    // 延迟1秒执行 1秒后进行tree结构默认选中操作    setTimeout(function ()&#123;        ... 默认选中tree节点        $(that.channelEvent).jstree(&quot;check_node&quot;, that.config.ck);        api.tree.getList(that);    &#125;, 1000)</code></pre><p>结果抛出错误 init方法找不到，这里学到了新的知识点</p><blockquote><p>使用JSON暴力拷贝，不会进行拷贝函数</p></blockquote><p>经过百般思考，想到了class 但是显然我的业务逻辑改为class稍微麻烦，而且对js的面向对象编程并不熟悉，决定将属性改为方法进行 <code>new</code>创建，互不冲突，最后的代码如下</p><pre><code class="JavaScript">api: &#123;    tree: function ()&#123;        return &#123;            config: &#123;               ...省略内部配置             &#125;,            // tree 初始化            init() &#123;                ...根据conifg配置进行渲染tree            &#125;,            getList()&#123;                require([&#39;jstree&#39;], function ()&#123;                    ...内部业务方法，每次tree操作事件 都会执行该方法作为刷新tree树事件                &#125;)            &#125;        &#125;    &#125;&#125;</code></pre><pre><code class="JavaScript">require([&#39;jstree&#39;], function ()&#123;    let that = new api.tree()    that.config.userIdsEvent = &quot;#push_box&quot;    that.config.checkAllEvent = &quot;#push_box_checkall&quot;    that.config.expandAllEvent = &quot;#push_box_expandall&quot;                // 加载tree初始化    that.init()    // 延迟1秒执行 1秒后进行tree结构默认选中操作    setTimeout(function ()&#123;        ... 默认选中tree节点        $(that.channelEvent).jstree(&quot;check_node&quot;, that.config.ck);        that.getList(that);    &#125;, 1000)&#125;)require([&#39;jstree&#39;], function ()&#123;        // 设置B的配置信息 例如dom结构        let that = new api.tree()        that.config.userIdsEvent = &quot;#push_box&quot;        that.config.checkAllEvent = &quot;#push_box_checkall&quot;        that.config.expandAllEvent = &quot;#push_box_expandall&quot;        that.config.ck = Config.push_box_ck;        // 加载tree初始化        that.init()        // 延迟1秒执行 1秒后进行tree结构默认选中操作        setTimeout(function ()&#123;            ... 默认选中tree节点赋值            $(that.channelEvent).jstree(&quot;check_node&quot;, that.config.ck);            that.getList(that);        &#125;, 1000)    &#125;)</code></pre><p>哎~ 又是趟坑的一天</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 错误排查 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
