@@ -26,7 +26,7 @@ algolia:
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://teanxo.github.io
+url: http://teanxo.cn
 permalink: :title/
 permalink_defaults:
 pretty_urls:
