@@ -13,16 +13,16 @@ timezone: ''
 
 
 # Algolia search
-algolia_search:
-  enable: true
-  hits:
-    per_page: 6
+# algolia_search:
+#   enable: true
+#   hits:
+#     per_page: 6
 
 # Algolia 全文搜索
-algolia:
-  applicationID: 'TW0XLBDN1W'
-  apiKey: '7777e79761e5bda229b09cde828eac4c'
-  indexName: 'blog'
+# algolia:
+#   applicationID: 'TW0XLBDN1W'
+#   apiKey: '7777e79761e5bda229b09cde828eac4c'
+#   indexName: 'blog'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -107,6 +107,8 @@ include:
 exclude:
 ignore:
 
+plugins:
+  - hexo-algoliasearch
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
