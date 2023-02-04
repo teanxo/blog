@@ -1,0 +1,6 @@
+<%- partial('_partial/navigator') %> 
+<ul class="articles">
+    <% page.posts.each(function (item){%> 
+        <%- partial('_partial/article', {item: item, index: true}) %> 
+    <% }); %> 
+</ul>
