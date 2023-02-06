@@ -1,0 +1,14 @@
+# 引用component名称
+component: website
+# 组建实例名称
+name: website-_44KJiFa-x
+
+org: '1255627908'
+app: test-website
+# 区分环境信息
+stage: dev
+inputs:
+  src:
+    src: ./public
+    index: index.html
+protocl: https
