@@ -40,19 +40,6 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 
     
-    <script>var musiclist = ""</script>
-    
-<script src="/js/loadaplayer.js"></script>
-
-    <!-- 引用依赖 -->
-    
-<link rel="stylesheet" href="/aplayer/dist/APlayer.min.css">
-
-    
-<script src="/aplayer/dist/APlayer.min.js"></script>
-<script src="/js/Meting.min.js"></script>
-
-    
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 
@@ -133,20 +120,20 @@
     <div id="post0" class="else">
         <p class="animated fadeInDown">
             
-            <a href="/categories/工作记录"><b>「
-                </b>工作记录<b> 」</b></a>
+            <a href="/categories/错误排查"><b>「
+                </b>错误排查<b> 」</b></a>
             
-            二月 04, 2023
+            二月 07, 2023
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/JDK8%E4%B9%8BStream%E6%B5%81%E7%94%A8%E6%B3%95/" title="JDK8之Stream流用法" class="posttitle">JDK8之Stream流用法</a></h3>
+            <a href="/DockerDesktop%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/" title="DockerDesktop错误总结" class="posttitle">DockerDesktop错误总结</a></h3>
         
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                2.2k
+                2.4k
             </span>
             
             
@@ -159,15 +146,19 @@
         </p>
         
         
-        <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+        <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
         
         <div class="md-content animated fadeIn">
             
-            <p>##Java8 Stream 流操作<br>现在的业务越来越复复杂话、随着JDK版本主键的更替一种新的操作诞生 流操作<br>以下描述一些我自己用到的一些场景与用法</p>
-<p>####List转Map<br>常见的</p>
-<pre><code class="java">Map&lt;Long...</code></pre>
+            <h5 id="开发环境："><a href="#开发环境：" class="headerlink" title="开发环境："></a>开发环境：</h5><ul>
+<li>windows11</li>
+<li>AMD Ryzen 7 </li>
+<li>16G+512</li>
+</ul>
+<h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><p><code>Docker Desktop System.InvalidOperationException</code></p>
+<p>目前不知道该问题出现原...</p>
             
-            <span class="read-more"><a href="/JDK8%E4%B9%8BStream%E6%B5%81%E7%94%A8%E6%B3%95/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/DockerDesktop%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -188,6 +179,99 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
+            
+            二月 07, 2023
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/%E5%88%9D%E8%AF%86Docker/" title="初识Docker" class="posttitle">初识Docker</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        11k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        10 mins.
+                    </span>
+                
+                
+            </p>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <h1 id="什么是-Docker"><a href="#什么是-Docker" class="headerlink" title="什么是 Docker"></a>什么是 Docker</h1><p><strong>Docker</strong> 最初是 <code>dotCloud</code> 公司创始人 <a target="_blank" rel="noopener" href="https://github.com/shykes">Solomon Hykes</a> 在法国期间发起的一个公司内部项目，它是基于 <code>dotCloud</code> 公司多年云服务技术的一次革新，并于 [2013 年 3 月以 Apache 2.0 授权协议开源][docker-soft]，主要项目代码在 <a target="_blank" rel="noopener" href="https://github.com/moby/moby">GitHub</a> 上进行维护。<code>Docker</code> 项目后来还加入了 Linux 基金会，并成立推动 <a target="_blank" rel="noopener" href="https://opencontainers.org/">开放容器联盟（OCI）</a>。</p>
+<p><strong>Docker</strong> 自开源后受到广泛的关注和讨论，至今其 <a target="_blank" rel="noopener" href="https://github.com/moby/moby">GitHub 项目</a> 已经超过...</p>
+            
+            <span class="read-more"><a href="/%E5%88%9D%E8%AF%86Docker/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/工作记录">
+                  <b>「 </b>工作记录<b> 」</b>
+                </a>
+            
+            二月 04, 2023
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/JDK8%E4%B9%8BStream%E6%B5%81%E7%94%A8%E6%B3%95/" title="JDK8之Stream流用法" class="posttitle">JDK8之Stream流用法</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        2.2k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        2 mins.
+                    </span>
+                
+                
+            </p>
+            
+                <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <p>##Java8 Stream 流操作<br>现在的业务越来越复复杂话、随着JDK版本主键的更替一种新的操作诞生 流操作<br>以下描述一些我自己用到的一些场景与用法</p>
+<p>####List转Map<br>常见的</p>
+<pre><code class="java">Map&lt;Long, MessageDetail&gt; messageMap = list.stream().collect(Collectors.toMap(MessageDetail::getMessageTypeId, v -&gt; v));
+</code></pre>
+<p>如果按照MessageTypeId作为Key转成Map遇到...</p>
+            
+            <span class="read-more"><a href="/JDK8%E4%B9%8BStream%E6%B5%81%E7%94%A8%E6%B3%95/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -250,7 +334,7 @@
             
             二月 04, 2023
         </p>
-        <h3 class="post-title animated fadeInDown"><a href="/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98V3%E7%89%88%E6%9C%AC%E5%AF%B9%E6%8E%A5222/" title="微信支付V3版本对接222" class="posttitle">微信支付V3版本对接222</a></h3>
+        <h3 class="post-title animated fadeInDown"><a href="/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98V3%E7%89%88%E6%9C%AC%E5%AF%B9%E6%8E%A5/" title="微信支付V3版本对接" class="posttitle">微信支付V3版本对接</a></h3>
         
             <p class="post-count animated fadeInDown">
                 
@@ -286,7 +370,7 @@ end
 <li>certPath：capiclient_cert.pem 商户证书绝对路径</li>
 <li>certP12Path：apiclient_cert.p12...</li></ul>
             
-            <span class="read-more"><a href="/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98V3%E7%89%88%E6%9C%AC%E5%AF%B9%E6%8E%A5222/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+            <span class="read-more"><a href="/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98V3%E7%89%88%E6%9C%AC%E5%AF%B9%E6%8E%A5/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
 </div>
@@ -667,9 +751,6 @@ xpack.security.enrollment.enabled: true
 
 
 
-
-<!-- 引用依赖 -->
-<script>document.write(aplayerconf)</script>
 
 
 

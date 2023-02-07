@@ -5,16 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>微信支付V3版本对接222 - 声声慢</title>
+    <title>DockerDesktop错误总结 - 声声慢</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="TriDiamond Obsidian,"> 
-    <meta name="description" content="摘要当需要使用微信支付时，需确保有一个可使用的appid，这里包括(微信公众平台、微信小程序、微信开放平台)等
-graph LR;
-subgraph 流程
-B[申请密钥证书等配置]
-B==&amp;gt;C,"> 
+    <meta name="description" content="开发环境：
+windows11
+AMD Ryzen 7 
+16G+512
+
+问题一Docker Desktop System.InvalidOperationException
+目前不知道该问题出现,"> 
     <meta name="author" content="teanxo"> 
     <link rel="alternative" href="atom.xml" title="声声慢" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -44,19 +46,6 @@ B==&amp;gt;C,">
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 
     
-    <script>var musiclist = ""</script>
-    
-<script src="/js/loadaplayer.js"></script>
-
-    <!-- 引用依赖 -->
-    
-<link rel="stylesheet" href="/aplayer/dist/APlayer.min.css">
-
-    
-<script src="/aplayer/dist/APlayer.min.js"></script>
-<script src="/js/Meting.min.js"></script>
-
-    
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 
@@ -78,7 +67,7 @@ B==&amp;gt;C,">
     <div class="navigation animated fadeIn fast delay-1s">
         <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://teanxo.cn">
         <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
-        <h3 class="subtitle">微信支付V3版本对接222</h3>
+        <h3 class="subtitle">DockerDesktop错误总结</h3>
         <div class="social">
             <!--        <div class="like-icon">-->
             <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -108,19 +97,19 @@ B==&amp;gt;C,">
         <div class="else">
             <p class="animated fadeInDown">
                 
-                <a href="/categories/工作记录"><b>「
-                    </b>工作记录<b> 」</b></a>
+                <a href="/categories/错误排查"><b>「
+                    </b>错误排查<b> 」</b></a>
                 
-                二月 04, 2023
+                二月 07, 2023
             </p>
-            <h3 class="post-title animated fadeInDown"><a href="/%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98V3%E7%89%88%E6%9C%AC%E5%AF%B9%E6%8E%A5222/" title="微信支付V3版本对接222" class="">微信支付V3版本对接222</a>
+            <h3 class="post-title animated fadeInDown"><a href="/DockerDesktop%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/" title="DockerDesktop错误总结" class="">DockerDesktop错误总结</a>
             </h3>
             
             <p class="post-count animated fadeInDown">
                 
                 <span>
                     <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                    2.1k
+                    2.4k
                 </span>
                 
                 
@@ -139,7 +128,7 @@ B==&amp;gt;C,">
             </p>
             
             
-            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li></ul>
+            <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
             
         </div>
     </div>
@@ -160,46 +149,45 @@ B==&amp;gt;C,">
 <div class="article">
     <div class='main'>
         <div class="content markdown animated fadeIn">
-            <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>当需要使用微信支付时，需确保有一个可使用的appid，这里包括(微信公众平台、微信小程序、微信开放平台)等</p>
-<pre><code class="mermaid">graph LR;
-subgraph 流程
-B[申请密钥证书等配置]
-B==&gt;C[获取微信平台证书]
-C==&gt;D[将以上所有参数进行调用]
-end
-</code></pre>
-<h3 id="V3所需配置"><a href="#V3所需配置" class="headerlink" title="V3所需配置"></a>V3所需配置</h3><ul>
-<li>keyPath：apiclient_key.pem 商户 key 绝对路径</li>
-<li>certPath：capiclient_cert.pem 商户证书绝对路径</li>
-<li>certP12Path：apiclient_cert.p12 证书绝对路径（暂未使用、可忽略）</li>
-<li>platformCertPath：wx_cert.pem 微信平台证书绝对路径，证书需要通过接口获取</li>
-<li>mchId：微信支付商户号</li>
-<li>apiKey3：Api-V3密钥</li>
+            <h5 id="开发环境："><a href="#开发环境：" class="headerlink" title="开发环境："></a>开发环境：</h5><ul>
+<li>windows11</li>
+<li>AMD Ryzen 7 </li>
+<li>16G+512</li>
 </ul>
-<h3 id="微信商户证书申请流程"><a href="#微信商户证书申请流程" class="headerlink" title="微信商户证书申请流程"></a>微信商户证书申请流程</h3><ol>
-<li>登录商户平台</li>
-<li>账户中心</li>
-<li>api安全</li>
-<li>生成证书</li>
+<h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><p><code>Docker Desktop System.InvalidOperationException</code></p>
+<p>目前不知道该问题出现原因，在电脑重启后会发生该错误，解决方案如下</p>
+<p>使用带有<strong>管理员权限</strong>的cmd执行、重启便可修复<br><code>netsh winsock reset</code></p>
+<h4 id="问题二"><a href="#问题二" class="headerlink" title="问题二"></a>问题二</h4><p>问题出现原因<br>想在虚拟机里进行Docker环境学习开发，把本地Docker卸载时所发生的问题</p>
+<p>首先我没有找到Docker desktop的卸载方法，使用windows自带卸载工具提示我无法完成<br>我试着将Docker desktop安装目录、容器目录删除 窃窃欢喜大功告成<br>过了几天后 想试着安装Docker desktop做一些简单的环境开发，却发现点击安装包时一直无响应</p>
+<p>解决过程</p>
+<ol>
+<li><del>清理Docker安装目录（无效）</del><br><img src="https://img-blog.csdnimg.cn/84aa84bf02c54518b50d0d9477298451.png" alt="在这里插入图片描述"></li>
+<li><del>安装进程监控器 找到Docker的UpgradeCodes(无效、没有执行UpgradeCodes进程)</del><br><img src="https://img-blog.csdnimg.cn/79e9fe2e9752496280cc7a3cf52a35f6.png" alt="在这里插入图片描述"><br>最终解决方案<br>windows下win+r、打开regedit(注册表)，搜索docker，将相关的注册表全部删除，重启电脑后再次尝试安装</li>
 </ol>
-<p>此步骤操作后可拿到(apiclient_key.pem、capiclient_cert.pem、apiclient_cert.p12)</p>
-<h3 id="微信平台证书-platformCertPath-获取步骤"><a href="#微信平台证书-platformCertPath-获取步骤" class="headerlink" title="微信平台证书(platformCertPath)获取步骤"></a>微信平台证书(platformCertPath)获取步骤</h3><p>使用<a target="_blank" rel="noopener" href="https://github.com/wechatpay-apiv3/CertificateDownloader">Certificate Downloader</a>进行生成</p>
-<h4 id="所需配置"><a href="#所需配置" class="headerlink" title="所需配置"></a>所需配置</h4><ol>
-<li>商户的私钥文件(-f)：apiclient_key.pem路径</li>
-<li>证书解密的密钥(-k)：Api-V3密钥</li>
-<li>微信支付商户号(-m)：对应mchId</li>
-<li>微信证书输出路径(-o)</li>
-<li>商户证书序列号(-s)：申请商户证书后可查看序列号、或<a href="#%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%E6%9F%A5%E7%9C%8B%E8%AF%81%E4%B9%A6%E5%BA%8F%E5%88%97%E5%8F%B7">点击此处查看</a></li>
+<blockquote>
+<p>删除时需仔细查看  有的可能不是docker的不用删除</p>
+</blockquote>
+<h4 id="问题三"><a href="#问题三" class="headerlink" title="问题三"></a>问题三</h4><p>安装docker desktop后，状态栏点击quit、restart等功能按钮无效、进入设置一直加载、docker命令提示<br><code>Error response from daemon: open \\.\pipe\docker_engine_linux: The system cannot find the file specified</code></p>
+<p>解决方案：</p>
+<ol>
+<li>管理员运行cmd或powershell</li>
 </ol>
-<h4 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h4><ol>
-<li>下载Certificate Downloader.jar文件</li>
-<li>执行完整命令</li>
-</ol>
-<pre><code class="shell">java -jar CertificateDownloader-1.1.jar -k $&#123;apiV3key&#125; -m $&#123;mchId&#125; -f $&#123;mchPrivateKeyFilePath&#125; -s $&#123;mchSerialNo&#125; -o $&#123;outputFilePath&#125;
+<pre><code class="powershell">cd &quot;C:\Program Files\Docker\Docker&quot;
+
+./DockerCli.exe -SwitchDaemon
 </code></pre>
-<h3 id="微信支付查看证书序列号"><a href="#微信支付查看证书序列号" class="headerlink" title="微信支付查看证书序列号"></a>微信支付查看证书序列号</h3><p>证书打包解压路径内执行(微信支付v2  v3密钥必须32位，不然可保存，但使用会报签名错误)</p>
-<pre><code class="shell">openssl x509 -in apiclient_cert.pem -noout -serial
+<ol start="2">
+<li>DockerD desktop-&gt;TroubleShoot-&gt;Clean&#x2F;purge data-&gt;选择WSL 2-&gt;delete-&gt;重启Docker desktop<br><img src="https://img-blog.csdnimg.cn/1a42d2702a1d43aba345fd9b1d043eff.png" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/9ad27157bdb941f29199d96c79029809.png" alt="在这里插入图片描述"></li>
+<li>进入docker desktop settings 取消WSL2，点击保存便可成功</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/aa5eec896027414aa07a0d77ab3658d3.png" alt="在这里插入图片描述"></p>
+<h4 id="问题四"><a href="#问题四" class="headerlink" title="问题四"></a>问题四</h4><p>WSL启动Ubuntu时报错“参考的对象类型不支持尝试的操作</p>
+<p>方法一：<br>调用管理员终端输入</p>
+<pre><code class="shell">    netsh winsock reset
 </code></pre>
+<p>执行后无需重启，便可以顺利打开Ubuntu，报错消失。<br>但是不得不说确实是“临时方法”，每次开机都要输一遍指令太麻烦了</p>
+<p>方法二：<br>下载NoLsp.exe</p>
+<p>方法三：<br>关闭游戏加速器</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls"
@@ -249,20 +237,13 @@ end
                     </dl>
                 </div>
                 <ul>
-                    <li><a href="/">6 <p>文章</p></a></li>
+                    <li><a href="/">8 <p>文章</p></a></li>
                     <li><a href="/categories">2 <p>分类</p></a></li>
-                    <li><a href="/tags">5 <p>标签</p></a></li>
+                    <li><a href="/tags">6 <p>标签</p></a></li>
                 </ul>
             </div>
             
             
-            
-            <div class="box sticky animated fadeInRight faster">
-                <div id="toc" class="subbox">
-                    <h4>目录</h4>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">摘要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#V3%E6%89%80%E9%9C%80%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">V3所需配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%95%86%E6%88%B7%E8%AF%81%E4%B9%A6%E7%94%B3%E8%AF%B7%E6%B5%81%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">微信商户证书申请流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E5%B9%B3%E5%8F%B0%E8%AF%81%E4%B9%A6-platformCertPath-%E8%8E%B7%E5%8F%96%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.</span> <span class="toc-text">微信平台证书(platformCertPath)获取步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E6%94%AF%E4%BB%98%E6%9F%A5%E7%9C%8B%E8%AF%81%E4%B9%A6%E5%BA%8F%E5%88%97%E5%8F%B7"><span class="toc-number">5.</span> <span class="toc-text">微信支付查看证书序列号</span></a></li></ol>
-                </div>
-            </div>
             
             
         </div>
@@ -478,9 +459,6 @@ end
 
 
 
-
-<!-- 引用依赖 -->
-<script>document.write(aplayerconf)</script>
 
 
 

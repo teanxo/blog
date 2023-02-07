@@ -40,19 +40,6 @@
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 
     
-    <script>var musiclist = ""</script>
-    
-<script src="/js/loadaplayer.js"></script>
-
-    <!-- 引用依赖 -->
-    
-<link rel="stylesheet" href="/aplayer/dist/APlayer.min.css">
-
-    
-<script src="/aplayer/dist/APlayer.min.js"></script>
-<script src="/js/Meting.min.js"></script>
-
-    
 <meta name="generator" content="Hexo 6.3.0"></head>
 
 
@@ -136,35 +123,42 @@
             <a href="/categories/错误排查"><b>「
                 </b>错误排查<b> 」</b></a>
             
-            二月 04, 2023
+            二月 07, 2023
         </p>
         <h3 class="post-title animated fadeInDown">
-            <a href="/mybatis%20%20Could%20not%20create%20connection%20to%20database%20server.%20Attempted%20reconnect%203%20times.%20Giving%20up/" title="mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up" class="posttitle">mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up</a></h3>
+            <a href="/DockerDesktop%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/" title="DockerDesktop错误总结" class="posttitle">DockerDesktop错误总结</a></h3>
         
         
         <p class="post-count animated fadeInDown">
             
             <span>
                 <b class="iconfont icon-text2"></b> <i>文章字数</i>
-                1.5k
+                2.4k
             </span>
             
             
             <span>
                 <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
-                1 mins.
+                2 mins.
             </span>
             
             
         </p>
         
         
+        <ul class="animated fadeInDown post-tags-list" itemprop="keywords"><li class="animated fadeInDown post-tags-list-item"><a class="animated fadeInDown post-tags-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
+        
         <div class="md-content animated fadeIn">
             
-            <h3 id="mybatis-Could-not-create-connection-to-database-server-Attempted-reconnect-3-times-Giving-up"><a href="#mybatis-Could-not-create-connection-to-database-server-Attempted-reconnect-3-times-Giving-up" class="headerlink" title="mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up"></a>mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up</h3><p>原文翻译</p>
-<pre><code>无...</code></pre>
+            <h5 id="开发环境："><a href="#开发环境：" class="headerlink" title="开发环境："></a>开发环境：</h5><ul>
+<li>windows11</li>
+<li>AMD Ryzen 7 </li>
+<li>16G+512</li>
+</ul>
+<h4 id="问题一"><a href="#问题一" class="headerlink" title="问题一"></a>问题一</h4><p><code>Docker Desktop System.InvalidOperationException</code></p>
+<p>目前不知道该问题出现原...</p>
             
-            <span class="read-more"><a href="/mybatis%20%20Could%20not%20create%20connection%20to%20database%20server.%20Attempted%20reconnect%203%20times.%20Giving%20up/" title="查看全文" class="posttitle">查看全文</a>
+            <span class="read-more"><a href="/DockerDesktop%E9%94%99%E8%AF%AF%E6%80%BB%E7%BB%93/" title="查看全文" class="posttitle">查看全文</a>
                 <b class="iconfont icon-arrow-right- gradient-text"></b></span>
         </div>
     </div>
@@ -185,6 +179,55 @@
 
     <div id="primary">
         
+<div class="post" id="post">
+    <div class="post-cover animated fadeIn" style="
+            background-image:
+            radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+            url(/img/welcome-cover.jpg);">
+    </div>
+    <div class="else">
+        <p class="animated fadeInDown">
+            
+                <a href="/categories/错误排查">
+                  <b>「 </b>错误排查<b> 」</b>
+                </a>
+            
+            二月 04, 2023
+        </p>
+        <h3 class="post-title animated fadeInDown"><a href="/mybatis%20%20Could%20not%20create%20connection%20to%20database%20server.%20Attempted%20reconnect%203%20times.%20Giving%20up/" title="mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up" class="posttitle">mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up</a></h3>
+        
+            <p class="post-count animated fadeInDown">
+                
+                    <span>
+                        <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                        1.5k
+                    </span>
+                
+                
+                    <span>
+                        <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                        1 mins.
+                    </span>
+                
+                
+            </p>
+            
+        
+        <div class="md-content animated fadeIn">
+            
+                <h3 id="mybatis-Could-not-create-connection-to-database-server-Attempted-reconnect-3-times-Giving-up"><a href="#mybatis-Could-not-create-connection-to-database-server-Attempted-reconnect-3-times-Giving-up" class="headerlink" title="mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up"></a>mybatis  Could not create connection to database server. Attempted reconnect 3 times. Giving up</h3><p>原文翻译</p>
+<pre><code>无法创建到数据库服务器的连接。尝试重新连接3次。放弃
+</code></pre>
+<p>今天在创建新项目时发生的错误，经过一系列的排查，发现是设置datasource.url原因所致</p>
+<pre><code class="yml">    # 此配置可运行
+    url: jdbc:mysql://localhost:3306/master?useUnicode=true&amp;characterEncodi...</code></pre>
+            
+            <span class="read-more"><a href="/mybatis%20%20Could%20not%20create%20connection%20to%20database%20server.%20Attempted%20reconnect%203%20times.%20Giving%20up/" title="查看全文" class="posttitle">查看全文</a> <b class="iconfont icon-arrow-right- gradient-text"></b></span>
+        </div>
+    </div>
+</div>
+
+
 <div class="post" id="post">
     <div class="post-cover animated fadeIn" style="
             background-image:
@@ -511,9 +554,6 @@ xpack.security.enrollment.enabled: true
 
 
 
-
-<!-- 引用依赖 -->
-<script>document.write(aplayerconf)</script>
 
 
 

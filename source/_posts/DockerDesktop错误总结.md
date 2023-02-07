@@ -1,7 +1,9 @@
 ---
 title: DockerDesktop错误总结
 date: 2023-02-07 16:44:02
+categories: 错误排查
 tags:
+    - Docker
 ---
 
 
