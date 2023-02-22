@@ -77,6 +77,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'zz', 'zby'], functio
 ```
 
 ### edit.html
+>此处与新增操作一致
 ```html
 <input type="hidden" id="c-record_sid" class="record_sid" name="row[record_sid]"  />
 {include file="workflow/common/relevance_list"}
