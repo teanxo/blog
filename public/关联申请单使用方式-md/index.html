@@ -1,0 +1,564 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>关联申请单使用方式.md - 声声慢</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="TriDiamond Obsidian,"> 
+    <meta name="description" content="add.html
+对应表单中引入通用列表视图
+添加一个hidden input作为容器数据载体
+
+&amp;lt;input type=&amp;quot;hidden&amp;quot; id=&amp;quot;c-recor,"> 
+    <meta name="author" content="teanxo"> 
+    <link rel="alternative" href="atom.xml" title="声声慢" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1429596_nzgqgvnmkjb.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.7.2/animate.min.css">
+
+    
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/codemirror.min.css">
+
+    
+<link rel="stylesheet" href="//cdn.bootcss.com/codemirror/5.48.4/theme/dracula.css">
+
+    
+<link rel="stylesheet" href="/css/obsidian.css">
+
+    
+<link rel="stylesheet" href="/css/ball-atom.min.css">
+
+    
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body class="loading">
+    <div class="loader">
+        <div class="la-ball-atom la-2x">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <span id="config-title" style="display:none">声声慢</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div class="scrollbar gradient-bg-rev"></div>
+<div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <div class="navigation animated fadeIn fast delay-1s">
+        <img id="home-icon" class="icon-home" src="/img/favicon.png" alt="" data-url="http://teanxo.cn">
+        <div id="play-icon" title="Play/Pause" class="iconfont icon-play"></div>
+        <h3 class="subtitle">关联申请单使用方式.md</h3>
+        <div class="social">
+            <!--        <div class="like-icon">-->
+            <!--            <a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+            <!--        </div>-->
+            <div>
+                <div class="share">
+                    
+                        <a href="javascript:;" class="iconfont icon-share1"></a>
+                        <div class="share-component-cc" data-disabled="facebook,douban,linkedin,diandian,tencent,google"></div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="section">
+        <div class=article-header-wrapper>
+    <div class="article-header">
+        <div class="article-cover animated fadeIn" style="
+            animation-delay: 600ms;
+            animation-duration: 1.2s;
+            background-image: 
+                radial-gradient(ellipse closest-side, rgba(0, 0, 0, 0.65), #100e17),
+                url('/img/cover.jpg') ">
+        </div>
+        <div class="else">
+            <p class="animated fadeInDown">
+                
+                <a href="javascript:;"><b>「 </b>文章<b> 」</b></a>
+                
+                二月 22, 2023
+            </p>
+            <h3 class="post-title animated fadeInDown"><a href="/%E5%85%B3%E8%81%94%E7%94%B3%E8%AF%B7%E5%8D%95%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F-md/" title="关联申请单使用方式.md" class="">关联申请单使用方式.md</a>
+            </h3>
+            
+            <p class="post-count animated fadeInDown">
+                
+                <span>
+                    <b class="iconfont icon-text2"></b> <i>文章字数</i>
+                    6.5k
+                </span>
+                
+                
+                <span>
+                    <b class="iconfont icon-timer__s"></b> <i>阅读约需</i>
+                    6 mins.
+                </span>
+                
+                
+                
+                <span id="busuanzi_container_page_pv">
+                    <b class="iconfont icon-read"></b> <i>阅读次数</i>
+                    <span id="busuanzi_value_page_pv">0</span>
+                </span>
+                
+            </p>
+            
+            
+        </div>
+    </div>
+</div>
+
+<div class="screen-gradient-after">
+    <div class="screen-gradient-content">
+        <div class="screen-gradient-content-inside">
+            <div class="bold-underline-links screen-gradient-sponsor">
+                <p>
+                    <span class="animated fadeIn delay-1s"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="article">
+    <div class='main'>
+        <div class="content markdown animated fadeIn">
+            <h3 id="add-html"><a href="#add-html" class="headerlink" title="add.html"></a>add.html</h3><ol>
+<li>对应表单中引入通用列表视图</li>
+<li>添加一个hidden input作为容器数据载体</li>
+</ol>
+<pre><code class="html">&lt;input type=&quot;hidden&quot; id=&quot;c-record_sid&quot; class=&quot;record_sid&quot; name=&quot;row[record_sid]&quot;  /&gt;
+&#123;include file=&quot;workflow/common/relevance_list&quot;&#125;
+
+&lt;!-- 实例代码 --&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;control-label col-xs-12 col-sm-2&quot;&gt;&#123;:__(&#39;Record_sid&#39;)&#125;:&lt;/label&gt;
+    &lt;div class=&quot;col-xs-12 col-sm-8&quot;&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+            &lt;input type=&quot;hidden&quot; id=&quot;c-record_sid&quot; class=&quot;record_sid&quot; name=&quot;row[record_sid]&quot;  /&gt;
+            &#123;include file=&quot;workflow/common/relevance_list&quot;&#125;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="对应的add-js方法"><a href="#对应的add-js方法" class="headerlink" title="对应的add js方法"></a>对应的add js方法</h3><ol>
+<li>在define中引入zby</li>
+</ol>
+<pre><code class="javascript">define([&#39;jquery&#39;, &#39;bootstrap&#39;, &#39;backend&#39;, &#39;table&#39;, &#39;form&#39;, &#39;zz&#39;, &#39;zby&#39;], function ($, undefined, Backend, Table, Form) &#123;
+    // 业务代码...
+</code></pre>
+<ol start="2">
+<li>add方法中</li>
+</ol>
+<pre><code class="js">    // 审批流中不可写入时处理
+    if (form_field[&#39;record_sid&#39;][&#39;write&#39;] == 0) &#123;
+        // 设置关联申请单为不可操作模式
+        Zby.data.relevanceIsOperation = false
+    &#125;
+
+    // 初始化关联申请单 参数为容器数据载体
+    Zby.initRelevance(&quot;#c-record_sid&quot;)
+
+    // 注册按钮点击事件
+    $(&quot;#record_sid_container&quot;).on(&#39;click&#39;, function ()&#123;
+        // 打开选择关联申请单
+        Zby.openRelevanceForm(&quot;#c-record_sid&quot;)
+    &#125;)
+</code></pre>
+<h3 id="contoller-add"><a href="#contoller-add" class="headerlink" title="contoller add"></a>contoller add</h3><pre><code class="php">    // 处理关联申请单信息
+    if (isset($params[&#39;record_sid&#39;]))&#123;
+        // 先删除当前的申请单数据
+        Db::name(&#39;relevance_form&#39;)-&gt;where([
+            &#39;old_form_id&#39; =&gt; $formid, // 当前审批中的表单ID
+            &#39;old_biz_id&#39; =&gt; $result // 当前审批中的业务表ID
+        ])-&gt;delete();
+        // 批量插入数据
+        $newRelevanceDatas = [];
+        // 关联申请单默认传入JSON字符串
+        $relevances = json_decode($params[&#39;record_sid&#39;], true);
+        // 循环写入关联申请表
+        foreach ($relevances as $item)&#123;
+            $newRelevanceDatas[] = [
+                &#39;old_form_id&#39; =&gt; $formid, // 当前表单ID
+                &#39;old_biz_id&#39; =&gt; $result, // 当前业务ID
+                &#39;new_workflow_id&#39; =&gt; $item[&#39;workflow_id&#39;], // 关联申请单工作流ID
+                &#39;new_form_id&#39; =&gt; $item[&#39;form_id&#39;], // 当前申请单表单ID
+                &#39;new_biz_id&#39; =&gt; $item[&#39;biz_id&#39;] // 当前申请单业务ID
+            ];
+        &#125;
+        Db::name(&#39;relevance_form&#39;)-&gt;insertAll($newRelevanceDatas);
+        unset($params[&#39;record_sid&#39;]);
+    &#125;
+</code></pre>
+<h3 id="edit-html"><a href="#edit-html" class="headerlink" title="edit.html"></a>edit.html</h3><blockquote>
+<p>此处与新增操作一致</p>
+</blockquote>
+<pre><code class="html">&lt;input type=&quot;hidden&quot; id=&quot;c-record_sid&quot; class=&quot;record_sid&quot; name=&quot;row[record_sid]&quot;  /&gt;
+&#123;include file=&quot;workflow/common/relevance_list&quot;&#125;
+
+&lt;!-- 实例代码 --&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+    &lt;label class=&quot;control-label col-xs-12 col-sm-2&quot;&gt;&#123;:__(&#39;Record_sid&#39;)&#125;:&lt;/label&gt;
+    &lt;div class=&quot;col-xs-12 col-sm-8&quot;&gt;
+        &lt;div class=&quot;input-group&quot;&gt;
+            &lt;input type=&quot;hidden&quot; id=&quot;c-record_sid&quot; class=&quot;record_sid&quot; name=&quot;row[record_sid]&quot;  /&gt;
+            &#123;include file=&quot;workflow/common/relevance_list&quot;&#125;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<h3 id="controoler-edit-return-view"><a href="#controoler-edit-return-view" class="headerlink" title="controoler edit return view"></a>controoler edit return view</h3><p>1.js中需要表单ID与业务ID 所以在响应视图前需要进行值存储</p>
+<pre><code class="php">$work_flow_id = $this-&gt;getWorkFlowId();
+$formid = Db::name(&#39;workflow_list&#39;)-&gt;where(&quot;id&quot;, $work_flow_id)-&gt;value(&#39;form_id&#39;);
+
+$this-&gt;assignconfig(&#39;form_id&#39;, $formid);
+$this-&gt;assignconfig(&#39;biz_id&#39;, $ids);
+</code></pre>
+<h3 id="对应的js方法"><a href="#对应的js方法" class="headerlink" title="对应的js方法"></a>对应的js方法</h3><pre><code class="js">    // 审批流中不可写入时处理
+    if (form_field[&#39;record_sid&#39;][&#39;write&#39;] == 0) &#123;
+        // 设置关联申请单为不可操作模式
+        Zby.data.relevanceIsOperation = false
+    &#125;
+
+    // 初始化关联申请单 参数为容器数据载体 
+    // 此处需要传入表单ID与业务ID  其它无变化
+    Zby.initRelevance(&quot;#c-record_sid&quot;, Config.form_id, Config.biz_id)
+
+    // 注册按钮点击事件
+    $(&quot;#record_sid_container&quot;).on(&#39;click&#39;, function ()&#123;
+        // 打开选择关联申请单
+        Zby.openRelevanceForm(&quot;#c-record_sid&quot;)
+    &#125;)
+</code></pre>
+<h3 id="controller-edit-save"><a href="#controller-edit-save" class="headerlink" title="controller edit save"></a>controller edit save</h3><blockquote>
+<p>此处与新增操作一致</p>
+</blockquote>
+<pre><code class="php">    // 处理关联申请单信息
+    if (isset($params[&#39;record_sid&#39;]))&#123;
+        // 先删除当前的申请单数据
+        Db::name(&#39;relevance_form&#39;)-&gt;where([
+            &#39;old_form_id&#39; =&gt; $formid, // 当前审批中的表单ID
+            &#39;old_biz_id&#39; =&gt; $result // 当前审批中的业务表ID
+        ])-&gt;delete();
+        // 批量插入数据
+        $newRelevanceDatas = [];
+        // 关联申请单默认传入JSON字符串
+        $relevances = json_decode($params[&#39;record_sid&#39;], true);
+        // 循环写入关联申请表
+        foreach ($relevances as $item)&#123;
+            $newRelevanceDatas[] = [
+                &#39;old_form_id&#39; =&gt; $formid, // 当前表单ID
+                &#39;old_biz_id&#39; =&gt; $result, // 当前业务ID
+                &#39;new_workflow_id&#39; =&gt; $item[&#39;workflow_id&#39;], // 关联申请单工作流ID
+                &#39;new_form_id&#39; =&gt; $item[&#39;form_id&#39;], // 当前申请单表单ID
+                &#39;new_biz_id&#39; =&gt; $item[&#39;biz_id&#39;] // 当前申请单业务ID
+            ];
+        &#125;
+        Db::name(&#39;relevance_form&#39;)-&gt;insertAll($newRelevanceDatas);
+        unset($params[&#39;record_sid&#39;]);
+    &#125;
+</code></pre>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls"
+                data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+            <ul id="audio-list" style="display:none">
+                
+                
+                <li title='0' data-url='/statics/chengdu.mp3'></li>
+                
+                    
+            </ul>
+            
+                        
+            
+            
+    <div id='gitalk-container' class="comment link"
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d=''
+        data-p='https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token'
+    >留言</div>
+
+
+            
+            
+        </div>
+        <div class="sidebar">
+            <div class="box animated fadeInRight">
+                <div class="subbox">
+                    <img src="https://s2.ax1x.com/2019/09/19/nLtSiD.png" height=300 width=300></img>
+                    <p>teanxo</p>
+                    <span>Think like an artist, develop like an artisan</span>
+                    <dl>
+                        
+                            
+                            
+                            
+                        
+                        
+                    </dl>
+                </div>
+                <ul>
+                    <li><a href="/">9 <p>文章</p></a></li>
+                    <li><a href="/categories">2 <p>分类</p></a></li>
+                    <li><a href="/tags">6 <p>标签</p></a></li>
+                </ul>
+            </div>
+            
+            
+            
+            <div class="box sticky animated fadeInRight faster">
+                <div id="toc" class="subbox">
+                    <h4>目录</h4>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#add-html"><span class="toc-number">1.</span> <span class="toc-text">add.html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84add-js%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">对应的add js方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#contoller-add"><span class="toc-number">3.</span> <span class="toc-text">contoller add</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#edit-html"><span class="toc-number">4.</span> <span class="toc-text">edit.html</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#controoler-edit-return-view"><span class="toc-number">5.</span> <span class="toc-text">controoler edit return view</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%BA%94%E7%9A%84js%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">对应的js方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#controller-edit-save"><span class="toc-number">7.</span> <span class="toc-text">controller edit save</span></a></li></ol>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    <div id="back-to-top" class="animated fadeIn faster">
+        <div class="flow"></div>
+        <span class="percentage animated fadeIn faster">0%</span>
+        <span class="iconfont icon-top02 animated fadeIn faster"></span>
+    </div>
+</body>
+<footer>
+    <p class="copyright" id="copyright">
+        &copy; 2023
+        <span class="gradient-text">
+            teanxo
+        </span>
+        
+        
+        </br>
+        鲁ICP备
+        <span class="gradient-text">
+            <a href="https://beian.miit.gov.cn/" title="2022003283号-1" target="_blank" rel="noopener">2022003283号-1</a>
+        </span>
+        
+        
+    </p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.6/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script>
+  MathJax.Hub.Config({
+    "HTML-CSS": {
+      preferredFont: "TeX",
+      availableFonts: ["STIX", "TeX"],
+      linebreaks: {
+        automatic: true
+      },
+      EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+      inlineMath: [
+        ["$", "$"],
+        ["\\(", "\\)"]
+      ],
+      processEscapes: true,
+      ignoreClass: "tex2jax_ignore|dno",
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      noUndefined: {
+        attributes: {
+          mathcolor: "red",
+          mathbackground: "#FFEEEE",
+          mathsize: "90%"
+        }
+      },
+      Macros: {
+        href: "{}"
+      }
+    },
+    messageStyle: "none"
+  });
+</script>
+<script>
+  function initialMathJax() {
+    MathJax.Hub.Queue(function () {
+      var all = MathJax.Hub.getAllJax(),
+        i;
+      // console.log(all);
+      for (i = 0; i < all.length; i += 1) {
+        console.log(all[i].SourceElement().parentNode)
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  }
+
+  function reprocessMathJax() {
+    if (typeof MathJax !== 'undefined') {
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    }
+  }
+</script>
+
+
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.css">
+ 
+<script src="//cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
+  
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/obsidian.js"></script>
+<script src="/js/jquery.truncate.js"></script>
+<script src="/js/search.js"></script>
+ 
+<script src="//cdn.bootcss.com/typed.js/2.0.10/typed.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/blueimp-md5/2.12.0/js/md5.min.js"></script>
+ 
+<script src="//cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+
+<script src="https://cdn.bootcss.com/codemirror/5.48.4/codemirror.min.js"></script>
+ 
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/javascript/javascript.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/css/css.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/xml/xml.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/htmlmixed/htmlmixed.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/clike/clike.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/php/php.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/shell/shell.min.js"></script>
+  
+<script src="//cdn.bootcss.com/codemirror/5.48.4/mode/python/python.min.js"></script>
+   
+<script src="/js/busuanzi.min.js"></script>
+
+<script>
+  $(document).ready(function () {
+    if ($('span[id^="busuanzi_"]').length) {
+      initialBusuanzi();
+    }
+  });
+</script>
+ 
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/photoswipe/4.1.3/default-skin/default-skin.min.css">
+
+
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="//cdn.bootcss.com/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<script>
+  function initialTyped() {
+    var typedTextEl = $('.typed-text');
+    if (typedTextEl && typedTextEl.length > 0) {
+      var typed = new Typed('.typed-text', {
+        strings: ['Think like an artist, develop like an artisan', '艺术家思维去思考问题，工匠创造精神去开发'],
+        typeSpeed: 90,
+        loop: true,
+        loopCount: Infinity,
+        backSpeed: 20,
+      });
+    }
+  }
+
+  if ($('.article-header') && $('.article-header').length) {
+    $(document).ready(function () {
+      initialTyped();
+    });
+  }
+</script>
+
+
+
+
+
+
+
+</html>
